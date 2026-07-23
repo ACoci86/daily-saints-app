@@ -1,0 +1,7 @@
+{
+  "name": "dailySaintsApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
