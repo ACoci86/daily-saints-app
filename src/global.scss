@@ -35,3 +35,40 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/*
+ * Daily Saints — printed-missal typography
+ * --------------------------------------------------------------------------
+ * EB Garamond plus a paper/ink liturgical palette, ported from the plugin
+ * demo. The colour variables follow prefers-color-scheme so the page reads
+ * like warm paper by day and inked vellum at night.
+ */
+@font-face {
+  font-family: 'EB Garamond'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('/assets/fonts/ebgaramond-400-normal-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond'; font-style: italic; font-weight: 400; font-display: swap;
+  src: url('/assets/fonts/ebgaramond-400-italic-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond'; font-style: normal; font-weight: 600; font-display: swap;
+  src: url('/assets/fonts/ebgaramond-600-normal-latin.woff2') format('woff2');
+}
+
+:root {
+  --paper:  #f7f3e9;
+  --ink:    #1f1a14;
+  --rubric: #a3221b;
+  --faint:  #8a8072;
+  --hair:   #ded3bd;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:  #14120e;
+    --ink:    #e8e0d0;
+    --rubric: #c4574a;
+    --faint:  #8d8474;
+    --hair:   #2f2a22;
+  }
+}

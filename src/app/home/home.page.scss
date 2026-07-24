@@ -1,27 +1,124 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-content {
+  --background: var(--paper);
+  --color: var(--ink);
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-variant-numeric: oldstyle-num;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+main {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1.25rem, 4vw, 2.5rem) 6rem;
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1.58;
+  -webkit-font-smoothing: antialiased;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+/* ---------- running head ---------- */
 
-  color: #8c8c8c;
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rubric);
+  margin-bottom: 2.75rem;
+}
+.head .title,
+.head .day,
+.also > .band {
+  font-size: .74rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: .18em;
+}
+.head .title { color: var(--rubric); }
+.head .day   { color: var(--faint); }
 
-  margin: 0;
+/* ---------- two column body ---------- */
+
+.leaf { display: grid; gap: 1.5rem 2.75rem; }
+@media (min-width: 780px) {
+  .leaf { grid-template-columns: 11rem 1fr; }
 }
 
-#container a {
-  text-decoration: none;
+.margin { font-size: .82rem; line-height: 1.45; }
+.margin .latin {
+  margin: .2rem 0 1.1rem;
+  color: var(--rubric);
+  font-style: italic;
+  font-size: .95rem;
 }
+.margin figure { margin: 0 0 1.1rem; }
+.margin img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--hair);
+}
+/* cap very tall artwork so a portrait icon cannot dominate the column */
+.leaf > .margin img { max-height: 21rem; width: auto; max-width: 100%; }
+.entry > .margin img { max-height: 13rem; }
+@media (max-width: 779px) {
+  .margin { display: grid; grid-template-columns: 8rem 1fr; gap: 1.25rem; align-items: start; }
+  .margin .latin { grid-column: 1 / -1; margin-bottom: 0; }
+}
+.margin .note b {
+  display: block;
+  color: var(--rubric);
+  font-weight: 400;
+  font-variant-caps: all-small-caps;
+  letter-spacing: .1em;
+  font-size: .95rem;
+}
+.margin .note { color: var(--faint); }
+
+/* ---------- main text ---------- */
+
+h1 {
+  margin: -.4rem 0 .35rem;
+  font-size: clamp(2.1rem, 5.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.04;
+}
+
+.rubric {
+  margin: 0 0 1.5rem;
+  color: var(--rubric);
+  font-variant-caps: all-small-caps;
+  letter-spacing: .14em;
+  font-size: 1rem;
+}
+
+.legacy {
+  margin: 0 0 1.35rem;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.summary { margin: 0 0 1.5rem; max-width: 34em; }
+
+/* the rubricated paragraph mark, as in a printed missal */
+.pilcrow {
+  color: var(--rubric);
+  font-weight: 600;
+  padding-right: .32em;
+}
+
+a { color: var(--rubric); text-underline-offset: .18em; text-decoration-thickness: .5px; }
+.more { margin: 0; font-size: .95rem; font-style: italic; }
+
+/* ---------- further saints ---------- */
+
+.also { margin-top: 3.5rem; }
+.also > .band {
+  margin: 0 0 2rem;
+  padding-top: .45rem;
+  border-top: 1px solid var(--rubric);
+  color: var(--rubric);
+}
+.entry + .entry { margin-top: 2.25rem; }
+.entry h2 { margin: -.25rem 0 .3rem; font-size: 1.55rem; font-weight: 400; line-height: 1.1; }
+.entry .summary { font-size: .94rem; margin-bottom: .7rem; }
+.entry .rubric { font-size: .85rem; margin-bottom: .8rem; }
+
+.msg { color: var(--faint); font-style: italic; padding: 3rem 0; }

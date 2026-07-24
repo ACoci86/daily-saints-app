@@ -1,20 +1,73 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <main>
+    <div class="head">
+      <span class="title">Daily Saints</span>
+      <span class="day">{{ day?.feast_day }}</span>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    @if (day; as currentDay) {
+      @if (currentDay.saints[0]; as first) {
+        <!-- principal saint of the day -->
+        <div class="leaf">
+          <aside class="margin">
+            <p class="latin">{{ latinDate(currentDay.date) }}</p>
+            @if (first.image) {
+              <figure><img [src]="first.image" [alt]="first.name" loading="lazy" /></figure>
+            }
+            @if (first.patronage?.length) {
+              <p class="note"><b>Patron of</b>{{ first.patronage!.join(', ') }}</p>
+            }
+          </aside>
+          <div>
+            <h1>{{ first.name }}</h1>
+            @if (first.era) {
+              <p class="rubric">{{ first.era }}</p>
+            }
+            @if (first.legacy) {
+              <p class="legacy">{{ first.legacy }}</p>
+            }
+            @if (first.summary) {
+              <p class="summary"><span class="pilcrow">&para;</span>{{ first.summary }}</p>
+            }
+            @if (first.wikipedia) {
+              <p class="more"><a [href]="first.wikipedia" target="_blank" rel="noopener">Wikipedia</a></p>
+            }
+          </div>
+        </div>
+      }
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+      <!-- further saints commemorated the same day -->
+      @if (currentDay.saints.length > 1) {
+        <section class="also">
+          <p class="band">Also this day</p>
+          @for (saint of currentDay.saints.slice(1); track $index) {
+            <div class="entry leaf">
+              <aside class="margin">
+                @if (saint.image) {
+                  <figure><img [src]="saint.image" [alt]="saint.name" loading="lazy" /></figure>
+                }
+                @if (saint.patronage?.length) {
+                  <p class="note"><b>Patron of</b>{{ saint.patronage!.join(', ') }}</p>
+                }
+              </aside>
+              <div>
+                <h2>{{ saint.name }}</h2>
+                @if (saint.era) {
+                  <p class="rubric">{{ saint.era }}</p>
+                }
+                @if (saint.summary) {
+                  <p class="summary"><span class="pilcrow">&para;</span>{{ saint.summary }}</p>
+                }
+                @if (saint.wikipedia) {
+                  <p class="more"><a [href]="saint.wikipedia" target="_blank" rel="noopener">Wikipedia</a></p>
+                }
+              </div>
+            </div>
+          }
+        </section>
+      }
+    } @else {
+      <p class="msg">Loading today's saints…</p>
+    }
+  </main>
 </ion-content>
