@@ -18,49 +18,65 @@ main {
 /* ---------- running head ---------- */
 
 .head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding-bottom: .5rem;
-  border-bottom: 1px solid var(--rubric);
-  margin-bottom: 2.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-bottom: 1.1rem;
 }
-.head .title,
-.head .day,
-.also > .band {
-  font-size: .74rem;
+.head .title {
+  text-align: center;
+  color: var(--rubric);
+  font-size: .82rem;
   font-variant-caps: all-small-caps;
-  letter-spacing: .18em;
+  letter-spacing: .2em;
 }
-.head .title { color: var(--rubric); }
-.head .day   { color: var(--faint); }
+.head .mark { justify-self: end; }
+
+.icon-btn {
+  display: inline-flex;
+  padding: .3rem;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+.icon-btn:first-child { justify-self: start; }
+.icon-btn svg { width: 1.5rem; height: 1.5rem; display: block; }
+
+/* short rubricated rule with a downward pointer, as on a missal leaf */
+.divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 2.6rem;
+}
+.divider .line { width: 3.25rem; border-top: 2px solid var(--rubric); }
+.divider .point {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid var(--rubric);
+}
 
 /* ---------- two column body ---------- */
 
-.leaf { display: grid; gap: 1.5rem 2.75rem; }
+/* image in a narrow left column, text alongside, on phones too, as in a missal leaf */
+.leaf {
+  display: grid;
+  grid-template-columns: minmax(0, 40%) 1fr;
+  gap: 1.25rem 1.5rem;
+}
 @media (min-width: 780px) {
-  .leaf { grid-template-columns: 11rem 1fr; }
+  .leaf { grid-template-columns: 11rem 1fr; gap: 1.5rem 2.75rem; }
 }
 
 .margin { font-size: .82rem; line-height: 1.45; }
-.margin .latin {
-  margin: .2rem 0 1.1rem;
-  color: var(--rubric);
-  font-style: italic;
-  font-size: .95rem;
-}
-.margin figure { margin: 0 0 1.1rem; }
+.margin figure { margin: 0 0 1rem; }
 .margin img {
   display: block; width: 100%; height: auto;
   border: 1px solid var(--hair);
-}
-/* cap very tall artwork so a portrait icon cannot dominate the column */
-.leaf > .margin img { max-height: 21rem; width: auto; max-width: 100%; }
-.entry > .margin img { max-height: 13rem; }
-@media (max-width: 779px) {
-  .margin { display: grid; grid-template-columns: 8rem 1fr; gap: 1.25rem; align-items: start; }
-  .margin .latin { grid-column: 1 / -1; margin-bottom: 0; }
+  border-radius: .5rem;
 }
 .margin .note b {
   display: block;
@@ -105,7 +121,26 @@ h1 {
 }
 
 a { color: var(--rubric); text-underline-offset: .18em; text-decoration-thickness: .5px; }
-.more { margin: 0; font-size: .95rem; font-style: italic; }
+
+/* framed "Read on Wikipedia" action, spans the full leaf, below both columns */
+.read {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin-top: 2.25rem;
+  padding: .85rem 1.2rem;
+  border: 1px solid var(--hair);
+  border-radius: .5rem;
+  background: color-mix(in srgb, var(--ink) 8%, var(--paper));
+  color: var(--rubric);
+  text-decoration: none;
+  font-variant-caps: all-small-caps;
+  letter-spacing: .13em;
+  font-size: .95rem;
+}
+.read .ic { width: 1.2rem; height: 1.2rem; flex: none; }
+.read .arrow { margin-left: auto; }
 
 /* ---------- further saints ---------- */
 
@@ -115,8 +150,14 @@ a { color: var(--rubric); text-underline-offset: .18em; text-decoration-thicknes
   padding-top: .45rem;
   border-top: 1px solid var(--rubric);
   color: var(--rubric);
+  font-size: .74rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: .18em;
 }
 .entry + .entry { margin-top: 2.25rem; }
+.entry-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+.entry-head h2 { flex: 1; }
+.entry-head .icon-btn svg { width: 1.3rem; height: 1.3rem; }
 .entry h2 { margin: -.25rem 0 .3rem; font-size: 1.55rem; font-weight: 400; line-height: 1.1; }
 .entry .summary { font-size: .94rem; margin-bottom: .7rem; }
 .entry .rubric { font-size: .85rem; margin-bottom: .8rem; }

@@ -1,0 +1,14 @@
+ion-tab-bar {
+  --background: var(--paper);
+  --color: var(--faint);
+  --color-selected: var(--rubric);
+  border-top: 1px solid var(--hair);
+}
+
+ion-tab-button {
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+}
+
+ion-tab-button ion-label {
+  font-size: .82rem;
+}

@@ -25,25 +25,4 @@ export class HomePage implements OnInit {
       this.notifyService.scheduleDaily(firstSaint.name);
     }
   }
-
-  // Latin day-of-month as printed in a missal, e.g. "xxiv Iulii" from "07-24".
-  private static readonly LATIN_MONTHS = [
-    'Ianuarii', 'Februarii', 'Martii', 'Aprilis', 'Maii', 'Iunii',
-    'Iulii', 'Augusti', 'Septembris', 'Octobris', 'Novembris', 'Decembris',
-  ];
-
-  latinDate(monthDay: string): string {
-    const [month, day] = monthDay.split('-').map(Number);
-    if (!month || !day) return '';
-    return `${this.roman(day)} ${HomePage.LATIN_MONTHS[month - 1]}`;
-  }
-
-  private roman(n: number): string {
-    const table: [number, string][] = [[10, 'x'], [9, 'ix'], [5, 'v'], [4, 'iv'], [1, 'i']];
-    let out = '';
-    for (const [value, sym] of table) {
-      while (n >= value) { out += sym; n -= value; }
-    }
-    return out;
-  }
 }
