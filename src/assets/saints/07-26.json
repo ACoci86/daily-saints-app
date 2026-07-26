@@ -1,7 +1,7 @@
 {
   "date": "07-26",
   "feast_day": "July 26",
-  "count": 1,
+  "count": 2,
   "saints": [
     {
       "name": "Anne",
@@ -17,6 +17,20 @@
       "summary": "Saint Anne is revered as the mother of the Blessed Virgin Mary and the grandmother of Jesus Christ. She and her husband, Saint Joachim, were known for their piety and devotion to God, despite facing the challenge of childlessness for many years. Their legacy is celebrated in various sanctuaries, particularly in France and Canada, where they are honored for their role in the Holy Family.",
       "image": "/images/saint_anne.jpg",
       "wikipedia": "https://en.wikipedia.org/wiki/Saint_Anne"
+    },
+    {
+      "name": "Joachim",
+      "feast_day": "July 26",
+      "era": "1st century",
+      "patronage": [
+        "fathers",
+        "grandfathers",
+        "married couples"
+      ],
+      "legacy": "Father of the Blessed Virgin Mary",
+      "summary": "Saint Joachim, according to Christian tradition, was the husband of Saint Anne and the father of the Blessed Virgin Mary, making him the grandfather of Jesus Christ. Though he is not named in the canonical Gospels, his story is drawn from early Christian writings such as the Gospel of James. Alongside Anne, he is remembered for his patience and unwavering faith through many years of childlessness before the birth of Mary, and he is honored as a model of devout fatherhood.",
+      "image": "/images/saint_joachim.jpg",
+      "wikipedia": "https://en.wikipedia.org/wiki/Joachim"
     }
   ]
 }
