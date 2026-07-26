@@ -20,9 +20,6 @@ export class HomePage implements OnInit {
     this.day = await this.saintService.getDay();
     console.log(this.day)
 
-    const firstSaint = this.day?.saints[0];
-    if (firstSaint) {
-      this.notifyService.scheduleDaily(firstSaint.name);
-    }
+    this.notifyService.scheduleNext30Days();
   }
 }
