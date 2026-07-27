@@ -1,10 +1,16 @@
-# Daily Saints
+<p align="center">
+  <img src="assets/logo.png" alt="Daily Saints" width="200" />
+</p>
 
-![Ionic](https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white&style=for-the-badge)
-![Angular](https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=white&style=for-the-badge)
-![Capacitor](https://img.shields.io/badge/Capacitor-119EFF?logo=capacitor&logoColor=white&style=for-the-badge)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=for-the-badge)
-![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white&style=for-the-badge)
+<h1 align="center">Daily Saints</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white&style=for-the-badge" alt="Ionic" />
+  <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=white&style=for-the-badge" alt="Angular" />
+  <img src="https://img.shields.io/badge/Capacitor-119EFF?logo=capacitor&logoColor=white&style=for-the-badge" alt="Capacitor" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=for-the-badge" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white&style=for-the-badge" alt="Android" />
+</p>
 
 A small mobile app that shows the saint (or saints) of the day, styled like a printed missal: warm paper, red rubrics, and EB Garamond type. You can browse any date, search saints by name, save favourites, and get a daily reminder.
 

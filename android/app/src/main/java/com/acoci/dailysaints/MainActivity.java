@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.acoci.dailysaints;
 
 import com.getcapacitor.BridgeActivity;
 
