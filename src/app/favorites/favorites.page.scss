@@ -1,12 +1,76 @@
 ion-content {
   --background: var(--paper);
   --color: var(--ink);
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
 }
 
-.stub {
-  font-family: 'EB Garamond', Garamond, Georgia, serif;
+main {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: calc(2.5rem + var(--ion-safe-area-top, 0px)) clamp(1.25rem, 4vw, 2.5rem) 3rem;
+  color: var(--ink);
+}
+
+.band {
+  margin: 0 0 2rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid var(--rubric);
   color: var(--rubric);
-  text-align: center;
-  padding: 4rem 1.5rem;
-  font-size: 1.1rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: .18em;
+  font-size: .9rem;
+}
+
+.empty {
+  color: var(--faint);
+  font-style: italic;
+}
+
+/* one favourite row: tappable saint on the left, remove button on the right */
+.fav {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--hair);
+}
+
+/* the main tappable area that opens the saint */
+.fav-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  padding: .6rem 0;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.fav-main img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border: 1px solid var(--hair);
+  border-radius: .4rem;
+  flex: none;
+}
+
+.fav-main .name {
+  font-size: 1.15rem;
+}
+
+/* the filled bookmark you tap to un-favourite */
+.remove {
+  display: inline-flex;
+  padding: .5rem;
+  background: none;
+  border: 0;
+  color: var(--rubric);
+  cursor: pointer;
+}
+
+.remove svg {
+  width: 1.3rem;
+  height: 1.3rem;
 }

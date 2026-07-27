@@ -55,4 +55,29 @@ export class SaintService {
         return saintDay;
         }
 
+    // A prebuilt list of every saint (name + date + image) for searching.
+    private searchIndex: SearchResult[] | null = null;
+
+    // Finds saints whose name contains the query. Loads the index once, then reuses it.
+    async searchByName(query: string): Promise<SearchResult[]> {
+        const q = query.trim().toLowerCase();
+        if (!q) return [];
+
+        if (!this.searchIndex) {
+            const response = await fetch('assets/saints-index.json');
+            this.searchIndex = await response.json();
+        }
+
+        return this.searchIndex!
+            .filter((s) => s.name.toLowerCase().includes(q))
+            .slice(0, 30);
+    }
+
+}
+
+// One entry in the search index.
+export interface SearchResult {
+    date: string;
+    name: string;
+    image: string | null;
 }

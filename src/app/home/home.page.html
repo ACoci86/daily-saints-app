@@ -1,19 +1,26 @@
 <ion-content>
   <main>
     <header class="head">
-      <button class="icon-btn" type="button" aria-label="Open menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-          <line x1="4" y1="7" x2="20" y2="7" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="17" x2="20" y2="17" />
-        </svg>
-      </button>
       <span class="title">Daily Saints</span>
-      <button class="icon-btn mark" type="button" aria-label="Save to favourites">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
-          <path d="M6 4h12v16l-6-4-6 4z" />
-        </svg>
-      </button>
+      <span class="actions">
+        <button class="icon-btn" type="button" aria-label="Share this saint"
+                (click)="day && shareSaint(day.saints[0])">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <line x1="8.6" y1="13.5" x2="15.4" y2="17.5" />
+            <line x1="15.4" y1="6.5" x2="8.6" y2="10.5" />
+          </svg>
+        </button>
+        <button class="icon-btn mark" type="button" aria-label="Save to favourites"
+                [class.saved]="day && isFav(day.saints[0])"
+                (click)="day && toggleFavourite(day.saints[0])">
+          <svg viewBox="0 0 24 24" [attr.fill]="day && isFav(day.saints[0]) ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+            <path d="M6 4h12v16l-6-4-6 4z" />
+          </svg>
+        </button>
+      </span>
     </header>
 
     <div class="divider">
@@ -78,8 +85,20 @@
               <div>
                 <div class="entry-head">
                   <h2>{{ saint.name }}</h2>
-                  <button class="icon-btn mark" type="button" aria-label="Save to favourites">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+                  <button class="icon-btn" type="button" aria-label="Share this saint"
+                          (click)="shareSaint(saint)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="18" cy="5" r="3" />
+                      <circle cx="6" cy="12" r="3" />
+                      <circle cx="18" cy="19" r="3" />
+                      <line x1="8.6" y1="13.5" x2="15.4" y2="17.5" />
+                      <line x1="15.4" y1="6.5" x2="8.6" y2="10.5" />
+                    </svg>
+                  </button>
+                  <button class="icon-btn mark" type="button" aria-label="Save to favourites"
+                          [class.saved]="isFav(saint)"
+                          (click)="toggleFavourite(saint)">
+                    <svg viewBox="0 0 24 24" [attr.fill]="isFav(saint) ? 'currentColor' : 'none'" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
                       <path d="M6 4h12v16l-6-4-6 4z" />
                     </svg>
                   </button>

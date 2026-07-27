@@ -1,3 +1,24 @@
 <ion-content>
-  <div class="stub">Calendar coming soon</div>
+  <main>
+    <input
+      class="search"
+      type="search"
+      placeholder="Search saints by name"
+      (input)="onSearch($event)" />
+
+    @if (results.length > 0) {
+      <div class="results">
+        @for (result of results; track result.date + result.name) {
+          <button class="result" type="button" (click)="openResult(result)">
+            @if (result.image) {
+              <img [src]="result.image" [alt]="result.name" />
+            }
+            <span class="name">{{ result.name }}</span>
+          </button>
+        }
+      </div>
+    } @else {
+      <ion-datetime presentation="date" (ionChange)="goToDate($event)"></ion-datetime>
+    }
+  </main>
 </ion-content>

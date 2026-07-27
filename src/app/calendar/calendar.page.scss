@@ -1,12 +1,72 @@
 ion-content {
   --background: var(--paper);
   --color: var(--ink);
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
 }
 
-.stub {
+main {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: calc(1.5rem + var(--ion-safe-area-top, 0px)) clamp(1.25rem, 4vw, 2.5rem) 3rem;
+}
+
+.search {
+  width: 100%;
   font-family: 'EB Garamond', Garamond, Georgia, serif;
-  color: var(--rubric);
-  text-align: center;
-  padding: 4rem 1.5rem;
   font-size: 1.1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--hair);
+  border-radius: .5rem;
+  padding: .65rem .85rem;
+  margin-bottom: 1.5rem;
+}
+
+/* search results list */
+.result {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: .6rem 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.result img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border: 1px solid var(--hair);
+  border-radius: .4rem;
+  flex: none;
+}
+
+.result .name {
+  font-size: 1.15rem;
+}
+
+/* the calendar (shown when not searching) */
+ion-datetime {
+  margin: .5rem auto 0;
+  border: 1px solid var(--hair);
+  border-radius: .5rem;
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+
+  --background: var(--paper);
+  color: var(--ink);
+
+  --ion-color-primary: var(--rubric);
+  --ion-color-primary-contrast: var(--paper);
+  --ion-color-primary-rgb: 163, 34, 27;
+}
+
+@media (prefers-color-scheme: dark) {
+  ion-datetime {
+    --ion-color-primary-rgb: 196, 87, 74;
+  }
 }

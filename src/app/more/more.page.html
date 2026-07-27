@@ -1,3 +1,17 @@
 <ion-content>
-  <div class="stub">More coming soon</div>
+  <main>
+    <p class="band">Notifications</p>
+
+    <label class="setting">
+      <span class="label">Daily reminder</span>
+      <ion-toggle [checked]="enabled" (ionChange)="onToggle($event)"></ion-toggle>
+    </label>
+
+    @if (enabled) {
+      <label class="setting">
+        <span class="label">Reminder time</span>
+        <input type="time" [value]="time" (change)="onTimeChange($event)" />
+      </label>
+    }
+  </main>
 </ion-content>

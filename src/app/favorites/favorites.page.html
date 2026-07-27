@@ -1,3 +1,26 @@
 <ion-content>
-  <div class="stub">Favorites coming soon</div>
+  <main>
+    <p class="band">Favourites</p>
+
+    @if (favs.length === 0) {
+      <p class="empty">No favourites yet. Tap the bookmark on a saint to save them here.</p>
+    } @else {
+      @for (fav of favs; track fav.date + fav.name) {
+        <div class="fav">
+          <button class="fav-main" type="button" (click)="open(fav)">
+            @if (fav.image) {
+              <img [src]="fav.image" [alt]="fav.name" />
+            }
+            <span class="name">{{ fav.name }}</span>
+          </button>
+
+          <button class="remove" type="button" (click)="remove(fav)" aria-label="Remove from favourites">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+              <path d="M6 4h12v16l-6-4-6 4z" />
+            </svg>
+          </button>
+        </div>
+      }
+    }
+  </main>
 </ion-content>

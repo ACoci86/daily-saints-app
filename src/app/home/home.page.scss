@@ -8,7 +8,7 @@ ion-content {
 main {
   max-width: 50rem;
   margin: 0 auto;
-  padding: 2.5rem clamp(1.25rem, 4vw, 2.5rem) 6rem;
+  padding: calc(2.5rem + var(--ion-safe-area-top, 0px)) clamp(1.25rem, 4vw, 2.5rem) 6rem;
   color: var(--ink);
   font-size: 19px;
   line-height: 1.58;
@@ -24,13 +24,14 @@ main {
   margin-bottom: 1.1rem;
 }
 .head .title {
+  grid-column: 2;
   text-align: center;
   color: var(--rubric);
   font-size: .82rem;
   font-variant-caps: all-small-caps;
   letter-spacing: .2em;
 }
-.head .mark { justify-self: end; }
+.head .actions { grid-column: 3; justify-self: end; display: flex; gap: .1rem; }
 
 .icon-btn {
   display: inline-flex;
@@ -40,8 +41,10 @@ main {
   color: var(--ink);
   cursor: pointer;
 }
-.icon-btn:first-child { justify-self: start; }
 .icon-btn svg { width: 1.5rem; height: 1.5rem; display: block; }
+
+/* a saved bookmark turns rubric red */
+.mark.saved { color: var(--rubric); }
 
 /* short rubricated rule with a downward pointer, as on a missal leaf */
 .divider {
