@@ -1,12 +1,12 @@
 # Daily Saints
 
-A small mobile app that shows the saint (or saints) of the day, styled like a printed missal: warm paper, red rubrics, and EB Garamond type. You can browse any date, search saints by name, save favourites, and get a daily reminder.
-
 ![Ionic](https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white&style=for-the-badge)
 ![Angular](https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=white&style=for-the-badge)
 ![Capacitor](https://img.shields.io/badge/Capacitor-119EFF?logo=capacitor&logoColor=white&style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=for-the-badge)
 ![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white&style=for-the-badge)
+
+A small mobile app that shows the saint (or saints) of the day, styled like a printed missal: warm paper, red rubrics, and EB Garamond type. You can browse any date, search saints by name, save favourites, and get a daily reminder.
 
 ## What it does
 
