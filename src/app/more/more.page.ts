@@ -27,7 +27,7 @@ export class MorePage {
   async onToggle(event: CustomEvent) {
     this.enabled = event.detail.checked;
     await this.settings.setEnabled(this.enabled);
-    await this.notify.scheduleNext30Days();
+    await this.notify.scheduleDaily();
   }
 
   // Pick a new time: save it and reschedule the notifications.
@@ -36,6 +36,6 @@ export class MorePage {
     if (!time) return;
 
     await this.settings.setTime(time);
-    await this.notify.scheduleNext30Days();
+    await this.notify.scheduleDaily();
   }
 }

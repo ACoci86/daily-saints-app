@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
   private favKeys = new Set<string>();
 
   ngOnInit() {
-    this.notifyService.scheduleNext30Days();
+    this.notifyService.scheduleDaily();
   }
 
   // Runs every time this tab becomes visible.
