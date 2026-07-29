@@ -8,41 +8,48 @@
   <img src="https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white&style=for-the-badge" alt="Ionic" />
   <img src="https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=white&style=for-the-badge" alt="Angular" />
   <img src="https://img.shields.io/badge/Capacitor-119EFF?logo=capacitor&logoColor=white&style=for-the-badge" alt="Capacitor" />
+  <img src="https://img.shields.io/badge/OneSignal-E54B4D?logo=onesignal&logoColor=white&style=for-the-badge" alt="OneSignal" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=for-the-badge" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white&style=for-the-badge" alt="Android" />
 </p>
 
-A small mobile app that shows the saint (or saints) of the day, styled like a printed missal: warm paper, red rubrics, and EB Garamond type. You can browse any date, search saints by name, save favourites, and get a daily reminder.
+A small mobile app that shows the saint (or saints) of the day, styled like a printed missal: warm paper, red rubrics, and EB Garamond type. You can browse any date, search saints by name, save favourites, and get a daily notification.
 
 ## What it does
 
 - **Today**: the day's saint(s), with image, story, patronage, and a link to Wikipedia.
 - **Calendar**: pick any date to jump to that day, or search a saint by name.
 - **Favourites**: bookmark saints and find them later (saved on the phone).
-- **More**: turn the daily reminder on/off and choose the time.
+- **Daily notification**: a push each morning at 8 AM local time, naming the day's saint.
 
 ## Built with
 
 - **Ionic + Angular**: the app framework and screens.
-- **Capacitor**: wraps the web app into a native Android app and provides plugins for local notifications, storage (Preferences), and sharing.
+- **Capacitor**: wraps the web app into a native Android app, with plugins for push notifications, storage (Preferences), and sharing.
+- **OneSignal + Firebase Cloud Messaging**: deliver the daily push notification.
+- **GitHub Actions**: a free scheduled job that sends the day's saint each morning.
 - **TypeScript**: the app code.
-- Saint data is a set of local JSON files (one per day), so the app works fully **offline**.
+- Saint data is a set of local JSON files (one per day), so browsing works fully **offline** (only the daily push needs internet).
 
-## The notification limitation (no Firebase)
+## How the daily notification works
 
-The daily reminder is a **local notification**. It is scheduled and fired by the phone itself, with no server involved. This keeps the app simple and offline, but it has two honest limits:
+Each morning the app delivers a **push notification** naming the day's saint, sent at **8 AM in each user's local timezone**. It works like this:
 
-1. **The reminder text is generic** ("Tap to meet today's saint") instead of naming the saint. A repeating alarm can only show the **same words every day**, and reliably showing a different saint name each day would need a server to send it. The name is always one tap away inside the app.
+1. A **GitHub Actions** job runs once a day (free, no server to host).
+2. It looks up the day's saint from the same JSON data the app uses.
+3. It calls **OneSignal**, which delivers the push through **Firebase Cloud Messaging**.
 
-2. **Some phones may delay or block it.** Aggressive battery managers (Xiaomi/MIUI especially) can throttle local notifications unless the user enables Autostart and disables battery restrictions for the app.
+Because push notifications travel through Google Play Services, they arrive reliably even on phones with aggressive battery managers (like Xiaomi/MIUI), where on-device reminders often get blocked.
 
-**Doing it "properly" would need Firebase.** With Firebase Cloud Messaging, a small server could send a **push notification** each morning containing that day's saint name. Push notifications go through Google Play Services, which phones don't kill, so they arrive reliably with fresh text every day. That was left out on purpose, because it would make the app partly online and add a backend to maintain.
+The sender is [`scripts/send-daily-saint.mjs`](scripts/send-daily-saint.mjs), scheduled by [`.github/workflows/daily-saint.yml`](.github/workflows/daily-saint.yml). It reads two GitHub repository secrets, `ONESIGNAL_APP_ID` and `ONESIGNAL_API_KEY`, which are never stored in the code.
+
+Trade-offs: the daily push needs **internet** to arrive, and the time is the same for everyone (8 AM local), not individually chosen.
 
 ## Running it
 
 ```bash
 npm install
-ionic serve              # run in the browser (no native notifications)
+ionic serve              # run in the browser (no push notifications)
 ```
 
 Build and run on an Android device:
