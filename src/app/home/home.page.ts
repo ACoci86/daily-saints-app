@@ -1,9 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent } from '@ionic/angular/standalone';
 import { Share } from '@capacitor/share';
 import { SaintService, SaintDay, Saint } from '../saint.service';
-import { NotifyService } from '../notify.service';
 import { FavouritesService } from '../favourites.service';
 
 @Component({
@@ -12,10 +11,9 @@ import { FavouritesService } from '../favourites.service';
   styleUrls: ['home.page.scss'],
   imports: [IonContent],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   private saintService = inject(SaintService); // gives access to SaintService so it can use getDay()
-  private notifyService = inject(NotifyService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private favourites = inject(FavouritesService);
@@ -24,10 +22,6 @@ export class HomePage implements OnInit {
 
   // Quick in-memory lookup of which saints are saved, for the filled/outline icons.
   private favKeys = new Set<string>();
-
-  ngOnInit() {
-    this.notifyService.scheduleDaily();
-  }
 
   // Runs every time this tab becomes visible.
   async ionViewWillEnter() {

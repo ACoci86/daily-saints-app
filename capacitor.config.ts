@@ -11,10 +11,6 @@ const config: CapacitorConfig = {
       showSpinner: false,
       androidScaleType: 'CENTER_INSIDE',
     },
-    LocalNotifications: {
-      smallIcon: 'ic_stat_notification',
-      iconColor: '#a3221b',
-    },
   },
 };
 

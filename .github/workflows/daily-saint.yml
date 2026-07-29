@@ -1,0 +1,24 @@
+name: Daily Saint push
+
+on:
+  schedule:
+    - cron: '0 4 * * *'    # every day at 04:00 UTC
+  workflow_dispatch:        # adds a manual "Run workflow" button
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Send today's saint
+        env:
+          ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
+        run: node scripts/send-daily-saint.mjs
