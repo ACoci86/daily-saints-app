@@ -27,14 +27,15 @@
             android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
         </provider>
+
+        <!-- OneSignal: default notification accent colour (ARGB) = rubric red -->
+        <meta-data android:name="com.onesignal.NotificationAccentColor.DEFAULT" android:value="FFA3221B" />
     </application>
 
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- Daily reminders: allow exact alarms so notifications fire on time (Android 12+/14+). -->
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- Show push notifications (Android 13+). -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 </manifest>
